@@ -3,13 +3,15 @@
 import React, { useState } from "react";
 import styles from "./auth-links.module.css";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
+import { signOut } from "@/auth/authSetup";
+import { useSession } from "next-auth/react";
 
 const AuthLinks = () => {
   const [open, setOpen] = useState(false);
+  const { data: session } = useSession(); // This will provide the current session data
 
-  // Temporary status
-  const status = "authenticated";
+  // You can get the status directly from session
+  const status = session ? "authenticated" : "unauthenticated"; // Use session to determine status
 
   // Wrap signOut in an anonymous function or a named handler
   const handleSignOut = () => {
@@ -18,7 +20,7 @@ const AuthLinks = () => {
 
   return (
     <>
-      {status === "notauthenticated" ? (
+      {status === "unauthenticated" ? (
         <Link href="/login">Login</Link>
       ) : (
         <>
@@ -38,7 +40,7 @@ const AuthLinks = () => {
           <Link href="/">Homepage</Link>
           <Link href="/">About</Link>
           <Link href="/">Contact</Link>
-          {status === "notauthenticated" ? (
+          {status === "unauthenticated" ? (
             <Link href="/login" className={styles.link}>
               Login
             </Link>
