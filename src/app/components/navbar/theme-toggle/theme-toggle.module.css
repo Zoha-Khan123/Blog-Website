@@ -1,0 +1,40 @@
+.toggleContainer {
+  width: 40px; 
+  height: 20px; 
+  background: #e4e7eb;
+  border-radius: 20px;
+  align-items: center;
+  padding: 2px; 
+  cursor: pointer;
+  transition: background 0.3s ease;
+  position: relative;
+}
+
+.toggleContainer:hover {
+  background: #d1d5db;
+}
+
+.toggleButton {
+  width: 16px; 
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: left 0.3s ease, background 0.3s ease;
+}
+
+.toggleButton.active {
+  left: 22px; 
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px; 
+  height: 12px;
+}
+
